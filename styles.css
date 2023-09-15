@@ -1,0 +1,53 @@
+#clockbg{
+    /* background-image: url(https://img.freepik.com/premium-vector/clock-face-white-background-12-hours-watch-dial-with-round-scale-vector-illustration_515038-9691.jpg?w=2000); */
+    background-image: url(clockface.png);
+    position: relative;
+    background-size: 100%;
+    margin: auto;
+    height: 768px;
+    width: 768px;
+}
+
+#hour{
+
+    position: absolute;
+    background: black;
+    border-radius: 20px;
+    transform-origin: bottom;
+
+    width: 1.8%;
+    height: 25%;
+    top: 25%;
+    left: 48.85%;
+    opacity: 0.8;
+
+
+}
+
+#minute{
+    position: absolute;
+    background: black;
+    border-radius: 20px;
+    transform-origin: bottom;
+
+    width: 1.6%;
+    height: 30%;
+    top: 19%;
+    left: 48.9%;
+    opacity: 0.8;
+
+}
+
+#second{
+    position: absolute;
+    background: black;
+    border-radius: 20px;
+    transform-origin: bottom;
+
+    width: 1%;
+    height: 40%;
+    top: 9%;
+    left: 49.25%;
+    opacity: 0.8;
+
+}
