@@ -1,53 +1,197 @@
-#clockbg{
-    /* background-image: url(https://img.freepik.com/premium-vector/clock-face-white-background-12-hours-watch-dial-with-round-scale-vector-illustration_515038-9691.jpg?w=2000); */
-    background-image: url(clockface.png);
-    position: relative;
-    background-size: 100%;
-    margin: auto;
-    height: 768px;
-    width: 768px;
+/* Global Styles and Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-#hour{
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    padding: 20px;
+}
 
+/* Header Styles */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Clock Container */
+#clockContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    animation: fadeIn 1s ease-out;
+}
+
+#clockbg {
+    background-image: url(clockface.png);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4),
+                0 0 0 15px rgba(255, 255, 255, 0.1),
+                inset 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+#clockbg:hover {
+    transform: scale(1.02);
+}
+
+/* Clock Hands - Common Styles */
+.hand {
     position: absolute;
-    background: black;
-    border-radius: 20px;
-    transform-origin: bottom;
+    background: #333333;
+    border-radius: 10px;
+    transform-origin: bottom center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.05s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
 
-    width: 1.8%;
+/* Hour Hand */
+#hour {
+    width: 3%;
     height: 25%;
     top: 25%;
-    left: 48.85%;
-    opacity: 0.8;
-
-
+    left: 48.5%;
+    background: linear-gradient(to bottom, #2c3e50, #34495e);
 }
 
-#minute{
-    position: absolute;
-    background: black;
-    border-radius: 20px;
-    transform-origin: bottom;
-
-    width: 1.6%;
-    height: 30%;
-    top: 19%;
-    left: 48.9%;
-    opacity: 0.8;
-
+/* Minute Hand */
+#minute {
+    width: 2.5%;
+    height: 32%;
+    top: 18%;
+    left: 48.75%;
+    background: linear-gradient(to bottom, #34495e, #4a5f7f);
 }
 
-#second{
-    position: absolute;
-    background: black;
-    border-radius: 20px;
-    transform-origin: bottom;
-
-    width: 1%;
-    height: 40%;
-    top: 9%;
+/* Second Hand */
+#second {
+    width: 1.5%;
+    height: 38%;
+    top: 12%;
     left: 49.25%;
-    opacity: 0.8;
+    background: linear-gradient(to bottom, #e74c3c, #c0392b);
+}
 
+/* Digital Time Display */
+#digitalTime {
+    font-size: 2rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 15px 40px;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Footer Styles */
+footer {
+    margin-top: 60px;
+    text-align: center;
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    #clockbg {
+        width: 320px;
+        height: 320px;
+    }
+    
+    #digitalTime {
+        font-size: 1.5rem;
+        padding: 12px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    #clockbg {
+        width: 280px;
+        height: 280px;
+    }
+    
+    #digitalTime {
+        font-size: 1.2rem;
+        padding: 10px 25px;
+    }
+    
+    footer {
+        margin-top: 40px;
+        font-size: 0.8rem;
+    }
 }

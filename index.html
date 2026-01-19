@@ -3,40 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet"  href="styles.css">
+    <meta name="description" content="A beautiful analog clock built with HTML, CSS, and JavaScript that displays real-time hours, minutes, and seconds.">
+    <meta name="author" content="Martin888Maina">
+    <title>Analog Clock - Real-Time JavaScript Clock</title>
+    <link rel="icon" type="image/png" href="clockface.png">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <h1>Analog Clock</h1>
+        <p class="subtitle">Real-time JavaScript clock with smooth animations</p>
+    </header>
 
-    <h1>JAVASCRIPT ANALOGUE CLOCK</h1>
+    <main>
+        <div id="clockContainer">
+            <div id="clockbg">
+                <!-- Clock hands positioned and rotated via JavaScript -->
+                <div id="hour" class="hand"></div>
+                <div id="minute" class="hand"></div>
+                <div id="second" class="hand"></div>
+            </div>
+            
+            <!-- Digital time display for accessibility -->
+            <div id="digitalTime"></div>
+        </div>
+    </main>
 
-    <div id="clockbg">
-
-        <div id="hour" ></div>
-        <div id="minute"></div>
-        <div id="second"></div>
-
-    </div>
-   
+    <footer>
+        <p>&copy; 2026 Martin888Maina. All rights reserved.</p>
+    </footer>
 
     <script>
-
-    setInterval(() => {
-        d = new Date(); //object of date()
-        hr = d.getHours();
-        min = d.getMinutes();
-        sec = d.getSeconds();
-        hr_rotation = 30 * hr + min / 2; //converting current time
-        min_rotation = 6 * min;
-        sec_rotation = 6 * sec;
-    
-        hour.style.transform = `rotate(${hr_rotation}deg)`;
-        minute.style.transform = `rotate(${min_rotation}deg)`;
-        second.style.transform = `rotate(${sec_rotation}deg)`;
-    }, 1000);
-
-
+        // Update clock every second to reflect current time
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            
+            // Calculate rotation angles for each hand
+            // Hour hand moves 30 degrees per hour plus 0.5 degrees per minute
+            const hourRotation = 30 * hours + minutes / 2;
+            
+            // Minute hand moves 6 degrees per minute
+            const minuteRotation = 6 * minutes;
+            
+            // Second hand moves 6 degrees per second
+            const secondRotation = 6 * seconds;
+            
+            // Apply rotations to clock hands
+            document.getElementById('hour').style.transform = `rotate(${hourRotation}deg)`;
+            document.getElementById('minute').style.transform = `rotate(${minuteRotation}deg)`;
+            document.getElementById('second').style.transform = `rotate(${secondRotation}deg)`;
+            
+            // Update digital time display for accessibility
+            const formattedTime = now.toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit' 
+            });
+            document.getElementById('digitalTime').textContent = formattedTime;
+        }
+        
+        // Initialize clock and set interval
+        updateClock();
+        setInterval(updateClock, 1000);
     </script>
-    
 </body>
 </html>
