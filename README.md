@@ -1,6 +1,6 @@
 # Analog Clock
 
-A beautiful, responsive analog clock built with vanilla HTML, CSS, and JavaScript. This project demonstrates clean code practices, modern web development techniques, and attention to visual design.
+A responsive analog clock built with vanilla HTML, CSS, and JavaScript. This project demonstrates clean code practices, modern web development techniques, and attention to visual design.
 
 ## Overview
 
